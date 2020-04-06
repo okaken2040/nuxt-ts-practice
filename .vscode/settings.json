@@ -1,0 +1,22 @@
+{
+  "eslint.validate": [
+    "vue",
+    "html",
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact"
+  ],
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": false,
+  "vetur.validation.template": false,
+
+  //ワークスペースの直下に設定ファイル(.eslintrc.js、package.jsonなど)がない場合、
+  //ワークスペースを指定しないと、eslintが動作しない。
+  "eslint.workingDirectories": [
+    "./app",
+  ],
+}
