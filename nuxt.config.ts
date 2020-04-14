@@ -31,7 +31,7 @@ const nuxtConfig: Configuration = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [{ src: '@/plugins/vee-validate' }],
   /*
    ** Nuxt.js dev-modules
    */
@@ -81,9 +81,7 @@ const nuxtConfig: Configuration = {
    ** Build configuration
    */
   build: {
-    /*
-     ** You can extend webpack config here
-     */
+    transpile: ['vee-validate/dist/rules'],
     extend(config, ctx) {
       if (ctx.isDev && ctx.isClient) {
         if (!config.module) return

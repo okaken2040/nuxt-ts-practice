@@ -1,0 +1,34 @@
+<template>
+  <v-layout column justify-center align-center>
+    <v-flex xs12 sm8 md6>
+      <div class="text-center">
+        <logo />
+        <vuetify-logo />
+      </div>
+      <v-card>
+        <v-card-title class="headline">
+          登録完了しました。
+        </v-card-title>
+        <v-card-text>
+          <p>
+            ご登録ありがとうございます。
+          </p>
+        </v-card-text>
+      </v-card>
+    </v-flex>
+  </v-layout>
+</template>
+
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
+import Logo from '@/components/Logo.vue'
+import VuetifyLogo from '@/components/VuetifyLogo.vue'
+
+@Component({
+  components: {
+    Logo,
+    VuetifyLogo
+  }
+})
+export default class extends Vue {}
+</script>
