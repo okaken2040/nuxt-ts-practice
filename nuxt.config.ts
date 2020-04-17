@@ -1,6 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
+import { Configuration } from '@nuxt/types'
 
-export default {
+const nuxtConfig: Configuration = {
   mode: 'universal',
   /*
    ** Headers of the page
@@ -85,6 +86,7 @@ export default {
      */
     extend(config, ctx) {
       if (ctx.isDev && ctx.isClient) {
+        if (!config.module) return
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
@@ -95,3 +97,4 @@ export default {
     }
   }
 }
+module.exports = nuxtConfig
