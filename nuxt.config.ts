@@ -1,5 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
 import { Configuration } from '@nuxt/types'
+import i18n from './locales/nuxt-i18n.config'
 
 const nuxtConfig: Configuration = {
   mode: 'universal',
@@ -49,7 +50,8 @@ const nuxtConfig: Configuration = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    ['nuxt-i18n', i18n]
   ],
   /*
    ** Axios module configuration

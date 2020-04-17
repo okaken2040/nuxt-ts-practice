@@ -9,7 +9,7 @@
     >
       <FormValidationInput
         rules="required|max:50"
-        label-message="Name"
+        :label-message="$t('form.label.name')"
         input-type="text"
         form-component-name="name"
         max-length="50"
@@ -25,7 +25,7 @@
       <!-- メールアドレスには入力文字数を表示しない -->
       <FormValidationInput
         rules="required|email|max:256"
-        label-message="E-Mail"
+        :label-message="$t('form.label.email')"
         input-type="email"
         form-component-name="email"
         max-length="256"
@@ -34,7 +34,7 @@
       />
       <FormValidationTextarea
         rules="required|max:1000"
-        label-message="Message"
+        :label-message="$t('form.label.message')"
         textarea-cols="20"
         textarea-rows="10"
         form-component-name="message"
@@ -49,7 +49,7 @@
         </template>
       </FormValidationTextarea>
       <button type="submit" :disabled="invalid">
-        Submit
+        {{ $t('form.button') }}
       </button>
     </validation-observer>
   </div>
