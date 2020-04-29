@@ -35,8 +35,17 @@
       <v-btn icon @click.stop="fixed = !fixed">
         <v-icon>mdi-minus</v-icon>
       </v-btn>
-      <v-toolbar-title v-text="title" />
+      <nuxt-link :to="localePath('/')" style="text-decoration:none">
+        <v-toolbar-title v-text="title" />
+      </nuxt-link>
       <v-spacer />
+      <a
+        v-for="locale in availableLocales"
+        :key="locale.code"
+        style="text-decoration:none"
+        @click.prevent="changeLocale(locale.code)"
+        >{{ locale.name }}</a
+      >
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
@@ -86,7 +95,18 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Top'
+    }
+  },
+  computed: {
+    availableLocales() {
+      return this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale)
+    }
+  },
+  methods: {
+    changeLocale(localeCode) {
+      this.$i18n.setLocale(localeCode)
+      this.$setValidationLocale(localeCode)
     }
   }
 }
