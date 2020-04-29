@@ -13,7 +13,7 @@ export default {
       file: 'en-US.json'
     }
   ],
-  defaultLocale: 'en',
+  defaultLocale: 'ja',
   strategy: 'prefix_and_default',
   detectBrowserLanguage: {
     useCookie: true

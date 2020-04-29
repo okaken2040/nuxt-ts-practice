@@ -1,34 +1,14 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <div class="text-center">
-        <logo />
-        <vuetify-logo />
-      </div>
+  <v-row justify="center">
+    <v-col cols="12" md="8" ls="6">
       <v-card>
-        <v-card-title class="headline">
-          登録完了しました。
+        <v-card-title>
+          <p>{{ $t('thank.title') }}</p>
         </v-card-title>
         <v-card-text>
-          <p>
-            ご登録ありがとうございます。
-          </p>
+          <p>{{ $t('thank.content') }}</p>
         </v-card-text>
       </v-card>
-    </v-flex>
-  </v-layout>
+    </v-col>
+  </v-row>
 </template>
-
-<script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
-import Logo from '@/components/Logo.vue'
-import VuetifyLogo from '@/components/VuetifyLogo.vue'
-
-@Component({
-  components: {
-    Logo,
-    VuetifyLogo
-  }
-})
-export default class extends Vue {}
-</script>

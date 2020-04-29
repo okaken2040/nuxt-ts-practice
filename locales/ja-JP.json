@@ -1,4 +1,15 @@
 {
+  "top":{
+    "title":"ようこそNuxt.js + Vuetifyへ！"
+  },
+  "contact":{
+    "title":"お問い合わせ",
+    "link":"お問い合わせページへ"
+  },
+  "thank":{
+    "title":"完了しました",
+    "content":"お問い合わせありがとうございます"
+  },
   "form":{
     "label":{
       "name":"お名前",

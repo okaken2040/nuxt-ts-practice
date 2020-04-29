@@ -1,22 +1,20 @@
 <template>
   <validation-provider v-slot="{ errors }" :rules="rules" :name="labelMessage">
-    <div class="container">
-      <label :for="formComponentName"> {{ labelMessage }}: </label>
-      <textarea
-        :id="formComponentName"
-        v-model="inputValueModel"
-        :cols="textareaCols"
-        :rows="textareaRows"
-        :name="formComponentName"
-        :maxlength="maxLength"
-        :placeholder="placeHolderMessage"
-      />
-      <!-- 入力値と最大文字数を親Componentで扱えるようにする -->
-      <slot :inputValue="inputValue" :maxLength="maxLength" />
-      <p v-show="errors.length">
-        {{ errors[0] }}
-      </p>
-    </div>
+    <label :for="formComponentName"> {{ labelMessage }} </label>
+    <v-textarea
+      :id="formComponentName"
+      v-model="inputValueModel"
+      :cols="textareaCols"
+      :rows="textareaRows"
+      :name="formComponentName"
+      :maxlength="maxLength"
+      :placeholder="placeHolderMessage"
+      solo
+      :counter="isCounter ? maxLength : undefined"
+    ></v-textarea>
+    <p v-show="errors.length" style="color : red">
+      {{ errors[0] }}
+    </p>
   </validation-provider>
 </template>
 
@@ -42,6 +40,9 @@ export default class FormValidationTextarea extends Vue {
 
   @Prop({ type: String, required: true })
   maxLength!: String
+
+  @Prop({ type: Boolean, default: false })
+  isCounter!: Boolean
 
   @Prop({ type: String, required: true })
   placeHolderMessage!: String

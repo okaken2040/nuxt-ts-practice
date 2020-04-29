@@ -1,4 +1,15 @@
 {
+  "top":{
+    "title":"Welcome to Nuxt.js + Vuetify！"
+  },
+  "contact":{
+    "title":"Contact Us",
+    "link":"Contact Us"
+  },
+  "thank":{
+    "title":"It's done",
+    "content":"Thank you for contacting us!"
+  },
   "form":{
     "label":{
       "name":"Name",
