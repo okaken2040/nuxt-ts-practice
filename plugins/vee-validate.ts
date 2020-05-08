@@ -9,6 +9,7 @@ import JA from 'vee-validate/dist/locale/ja.json'
 import EN from 'vee-validate/dist/locale/en.json'
 import { required, email, max } from 'vee-validate/dist/rules'
 import { Context } from '@nuxt/types'
+import VueI18n from 'vue-i18n'
 
 extend('required', required)
 extend('email', email)
@@ -24,13 +25,18 @@ interface ValidationMessages {
 const validationMessages = { en: EN, ja: JA }
 
 export default (context: Context) => {
-  const browserLocale: string = context.app.i18n.locale
-  if ((validationMessages as ValidationMessages)[browserLocale]) {
-    LOCALE = browserLocale
-    localize(
-      browserLocale,
-      (validationMessages as ValidationMessages)[browserLocale]
-    )
+  if (context.app.i18n === undefined) {
+    LOCALE = 'ja'
+    localize('ja', JA)
+  } else if (context.app.i18n) {
+    const browserLocale: string = (context.app.i18n as VueI18n).locale
+    if ((validationMessages as ValidationMessages)[browserLocale]) {
+      LOCALE = browserLocale
+      localize(
+        browserLocale,
+        (validationMessages as ValidationMessages)[browserLocale]
+      )
+    }
   }
   Vue.prototype.$getValidationLocale = () => {
     return LOCALE
