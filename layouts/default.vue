@@ -41,6 +41,7 @@
       <v-spacer />
       <a
         v-for="locale in availableLocales"
+        id="localeSwitch"
         :key="locale.code"
         style="text-decoration:none"
         @click.prevent="changeLocale(locale.code)"
