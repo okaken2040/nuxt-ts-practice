@@ -7,10 +7,10 @@
       </div>
       <v-card>
         <v-card-title class="headline">
-          {{ $t('top.title') }}
+          <h1>{{ $t('top.title') }}</h1>
         </v-card-title>
         <v-card-text>
-          <nuxt-link :to="localePath('/contact/')" style="text-decoration:none">
+          <nuxt-link :to="localePath('/contact/')" :class="$style.link">
             <p>{{ $t('contact.link') }}</p>
           </nuxt-link>
         </v-card-text>
@@ -32,3 +32,8 @@ import VuetifyLogo from '~/components/VuetifyLogo.vue'
 })
 export default class extends Vue {}
 </script>
+
+<style lang="sass" module>
+.link
+  text-decoration : none
+</style>

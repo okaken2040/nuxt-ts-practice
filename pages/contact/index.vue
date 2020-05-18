@@ -5,16 +5,16 @@
         <v-row justify="center">
           <v-col cols="10">
             <v-card-title>
-              <p>{{ $t('contact.title') }}</p>
+              <h1>{{ $t('contact.title') }}</h1>
             </v-card-title>
-            <v-divider></v-divider>
+            <v-divider />
             <validation-observer
               ref="observer"
               v-slot="{ invalid }"
               tag="form"
               @submit.prevent="submit()"
             >
-              <FormValidationInput
+              <form-validation-input
                 rules="required|max:50"
                 :label-message="$t('form.label.name')"
                 input-type="text"
@@ -23,9 +23,8 @@
                 :is-counter="true"
                 :place-holder-message="$t('form.placeHolder.name')"
                 :input-value.sync="inputName"
-              >
-              </FormValidationInput>
-              <FormValidationInput
+              />
+              <form-validation-input
                 rules="required|email|max:256"
                 :label-message="$t('form.label.email')"
                 input-type="email"
@@ -34,7 +33,7 @@
                 :place-holder-message="$t('form.placeHolder.email')"
                 :input-value.sync="inputEmail"
               />
-              <FormValidationTextarea
+              <form-validation-textarea
                 rules="required|max:1000"
                 :label-message="$t('form.label.message')"
                 textarea-cols="20"
@@ -44,8 +43,7 @@
                 :is-counter="true"
                 :place-holder-message="$t('form.placeHolder.message')"
                 :input-value.sync="inputMessage"
-              >
-              </FormValidationTextarea>
+              />
               <v-card-actions>
                 <v-spacer />
                 <v-btn

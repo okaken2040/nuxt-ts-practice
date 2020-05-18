@@ -15,7 +15,7 @@
     <p
       v-show="errors.length"
       :id="formComponentName + '_error'"
-      style="color : red"
+      :class="$style.error_message"
     >
       {{ errors[0] }}
     </p>
@@ -55,3 +55,8 @@ export default class FormValidationTextarea extends Vue {
   inputValueModel!: String
 }
 </script>
+
+<style lang="sass" module>
+.error_message
+  color : red
+</style>

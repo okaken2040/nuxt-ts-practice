@@ -35,7 +35,7 @@
       <v-btn icon @click.stop="fixed = !fixed">
         <v-icon>mdi-minus</v-icon>
       </v-btn>
-      <nuxt-link :to="localePath('/')" style="text-decoration:none">
+      <nuxt-link :to="localePath('/')" :class="$style.link">
         <v-toolbar-title v-text="title" />
       </nuxt-link>
       <v-spacer />
@@ -43,7 +43,7 @@
         v-for="locale in availableLocales"
         id="localeSwitch"
         :key="locale.code"
-        style="text-decoration:none"
+        :class="$style.link"
         @click.prevent="changeLocale(locale.code)"
         >{{ locale.name }}</a
       >
@@ -112,3 +112,8 @@ export default {
   }
 }
 </script>
+
+<style lang="sass" module>
+.link
+  text-decoration : none
+</style>

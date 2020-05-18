@@ -3,7 +3,7 @@
     <v-col cols="12" md="8" ls="6">
       <v-card>
         <v-card-title>
-          <p>{{ $t('thank.title') }}</p>
+          <h1>{{ $t('thank.title') }}</h1>
         </v-card-title>
         <v-card-text>
           <p>{{ $t('thank.content') }}</p>
