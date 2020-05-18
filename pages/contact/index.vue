@@ -48,7 +48,12 @@
               </FormValidationTextarea>
               <v-card-actions>
                 <v-spacer />
-                <v-btn type="submit" :disabled="invalid" color="primary">
+                <v-btn
+                  id="submitButton"
+                  type="submit"
+                  :disabled="invalid"
+                  color="primary"
+                >
                   {{ $t('form.button') }}
                 </v-btn>
               </v-card-actions>

@@ -12,7 +12,11 @@
       solo
       :counter="isCounter ? maxLength : undefined"
     ></v-textarea>
-    <p v-show="errors.length" style="color : red">
+    <p
+      v-show="errors.length"
+      :id="formComponentName + '_error'"
+      style="color : red"
+    >
       {{ errors[0] }}
     </p>
   </validation-provider>
