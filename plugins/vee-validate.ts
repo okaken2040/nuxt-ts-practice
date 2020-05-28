@@ -25,18 +25,13 @@ interface ValidationMessages {
 const validationMessages = { en: EN, ja: JA }
 
 export default (context: Context) => {
-  if (context.app.i18n === undefined) {
-    LOCALE = 'ja'
-    localize('ja', JA)
-  } else if (context.app.i18n) {
-    const browserLocale: string = (context.app.i18n as VueI18n).locale
-    if ((validationMessages as ValidationMessages)[browserLocale]) {
-      LOCALE = browserLocale
-      localize(
-        browserLocale,
-        (validationMessages as ValidationMessages)[browserLocale]
-      )
-    }
+  const browserLocale: string = (context.app.i18n as VueI18n).locale
+  if ((validationMessages as ValidationMessages)[browserLocale]) {
+    LOCALE = browserLocale
+    localize(
+      browserLocale,
+      (validationMessages as ValidationMessages)[browserLocale]
+    )
   }
   Vue.prototype.$getValidationLocale = () => {
     return LOCALE

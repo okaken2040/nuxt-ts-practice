@@ -46,4 +46,7 @@ describe('ヘッダー', () => {
     wrapper.find('#localeSwitch').trigger('click')
     expect(changeLocaleMock).toBeCalledWith('en')
   })
+  it.skip('$setValidationLocale関数のテスト', () => {
+    // vue-test-utilsがnuxtのインスタンスから当関数を取得できないため、テストを見送る。
+  })
 })

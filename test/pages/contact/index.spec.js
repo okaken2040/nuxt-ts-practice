@@ -93,26 +93,28 @@ describe('お問い合わせ画面', () => {
   jest.useFakeTimers()
 
   it('遷移先の確認', async () => {
+    // 正常な値をフォームに入力
     wrapper.find('#name').setValue('test tarou')
     wrapper.find('#email').setValue('aaa@example.com')
     wrapper.find('#message').setValue('It is awesome!')
 
     await flush()
     expect(wrapper.find(ValidationObserver).vm.flags.invalid).toBeFalsy()
-    // trigger('click')でテストをすると、バリデーションが完了する前にテストが走るので、代わりにsubmitメソッドを直接実行する。
-    // submitボタンが押せる状態は、submitメソッドが実行できる状態であるので、submitメソッドを直接実行しても、再現性は担保されている。
+    // submitボタンを押下
+    // ※ trigger('click')でテストをすると、バリデーションが完了する前にテストが走るので、代わりにsubmitメソッドを直接実行する。
+    // ※ ValidationObserverのinvalidフラグがfalseの場合、submitメソッドが実行できる状態であるので、submitメソッドを直接実行しても、再現性は担保されている。
     wrapper.vm.submit()
     await flush()
-
+    // 1.フォームの値が初期化されていることを確認
     expect(wrapper.vm.inputName).toBe('')
     expect(wrapper.vm.inputEmail).toBe('')
     expect(wrapper.vm.inputMessage).toBe('')
     expect(wrapper.find('#name').element.value).toBe('')
     expect(wrapper.find('#email').element.value).toBe('')
     expect(wrapper.find('#message').element.value).toBe('')
-
+    // 2.vee-validateの状態が初期化されていることを確認
     expect(wrapper.find(ValidationObserver).vm.flags.invalid).toBeTruthy()
-
+    // 3.遷移先を確認
     expect(router.push).toBeCalledWith('/contact/thanks')
   })
 })
