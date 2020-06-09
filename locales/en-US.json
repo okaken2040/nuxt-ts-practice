@@ -1,10 +1,60 @@
 {
+  "drawer":{
+    "items":{
+      "top": "Top",
+      "about":"Read Me",
+      "user":"All Users",
+      "contact":"Contact Us"
+    }
+  },
   "top":{
-    "title":"Welcome to Nuxt.js + Vuetify！"
+    "title":"Welcome to Nuxt.js + Vuetify！",
+    "t":{
+      "1":"The front end was developed with the following framework based on Veu.js.",
+      "2":"The server side uses Kotlin to create an api that returns the values of the user,book table. The framework is based on the following.",
+      "conclusion":"The following page explains the purpose of development and how to use it."
+    },
+    "f_list":{
+      "1":"Nuxt.js",
+      "2":"Vuetify",
+      "3":"vee-validation",
+      "4":"nuxt-i18n",
+      "5":"axios",
+      "6":"jest",
+      "7":"nuxt-property-decorator",
+      "8":"typescript-build",
+      "9":"eslint",
+      "10":"prettier"
+    },
+    "b_list":{
+      "1":"Spring Web",
+      "2":"Spring Data JPA",
+      "3":"MySQL Driver",
+      "4":"Lombok",
+      "5":"Spring Boot DevTools"
+    }
+  },
+  "register":{
+    "title":"Sign Up"
+  },
+  "about":{
+    "title":"Read Me",
+    "link":"Read Me",
+    "purpose":"Purpose",
+    "text":"We'll add more later."
+  },
+  "users":{
+    "title":"All Users"
+  },
+  "user":{
+    "title":"User's Profile",
+    "name":"Name",
+    "age":"Age",
+    "profile":"Profile",
+    "back":"Back"
   },
   "contact":{
-    "title":"Contact Us",
-    "link":"Contact Us"
+    "title":"Contact Us"
   },
   "thank":{
     "title":"It's done",
@@ -14,13 +64,16 @@
     "label":{
       "name":"Name",
       "email":"Email",
+      "password":"password",
       "message":"Message"
     },
     "placeHolder":{
       "name":"Please enter your name",
       "email":"Please enter your email address",
+      "password":"Please enter your password",
       "message":"Please fill in the details of your inquiry"
     },
-    "button":"Submit"
+    "submit":"Submit",
+    "sign_up":"Sign Up"
   }
 }

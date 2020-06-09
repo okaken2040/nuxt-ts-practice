@@ -1,10 +1,60 @@
 {
+  "drawer":{
+    "items":{
+      "top": "ホーム",
+      "about":"利用方法",
+      "user":"ユーザー 一覧",
+      "contact":"お問い合わせ"
+    }
+  },
   "top":{
-    "title":"ようこそNuxt.js + Vuetifyへ！"
+    "title":"ようこそNuxt.js + Vuetifyへ！",
+    "t":{
+      "1":"フロントエンドはVeu.jsをベースに以下のフレームワークで開発しました。",
+      "2":"また、サーバサイドはKotlinを用いてuser,bookテーブルの値を返すapiを作成しました。フレームワークは以下のものを使用しています。",
+      "conclusion":"以下のページで、開発目的と使い方を解説しています。"
+    },
+    "f_list":{
+      "1":"Nuxt.js",
+      "2":"Vuetify",
+      "3":"vee-validation",
+      "4":"nuxt-i18n",
+      "5":"axios",
+      "6":"jest",
+      "7":"nuxt-property-decorator",
+      "8":"typescript-build",
+      "9":"eslint",
+      "10":"prettier"
+    },
+    "b_list":{
+      "1":"Spring Web",
+      "2":"Spring Data JPA",
+      "3":"MySQL Driver",
+      "4":"Lombok",
+      "5":"Spring Boot DevTools"
+    }
+  },
+  "register":{
+    "title":"会員登録"
+  },
+  "about":{
+    "title":"利用方法",
+    "link":"利用方法について",
+    "purpose":"目的",
+    "text":"後で書きます"
+  },
+  "users":{
+    "title":"ユーザー 一覧"
+  },
+  "user":{
+    "title":"ユーザー 詳細",
+    "name":"名前",
+    "age":"年齢",
+    "profile":"プロフィール",
+    "back":"戻る"
   },
   "contact":{
-    "title":"お問い合わせ",
-    "link":"お問い合わせページへ"
+    "title":"お問い合わせ"
   },
   "thank":{
     "title":"完了しました",
@@ -14,13 +64,16 @@
     "label":{
       "name":"名前",
       "email":"メールアドレス",
+      "password":"パスワード",
       "message":"お問い合わせ内容"
     },
     "placeHolder":{
       "name":"名前を入力してください",
       "email":"メールアドレスを入力してください",
+      "password":"パスワードを入力してください",
       "message":"お問い合わせ内容を入力してください"
     },
-    "button":"送信"
+    "submit":"送信",
+    "sign_up":"登録"
   }
 }
