@@ -31,7 +31,7 @@ const nuxtConfig: Configuration = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['plugins/vuetify', 'plugins/vee-validate'],
+  plugins: ['plugins/vuetify', 'plugins/vee-validate', 'plugins/axios/index'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -56,7 +56,10 @@ const nuxtConfig: Configuration = {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    host: 'localhost',
+    port: 8080
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
