@@ -1,107 +1,119 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
+    <v-navigation-drawer v-if="drawer" fixed app permanent width="200">
+      <drawer-list :items="drawerItems" />
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <nuxt-link :to="localePath('/')" :class="$style.link">
-        <v-toolbar-title v-text="title" />
-      </nuxt-link>
+
+    <div v-else>
+      <div
+        :class="$style.slideArea"
+        @mouseover="hover = 'over'"
+        @mouseleave="hover = 'leave'"
+      />
+      <v-card
+        :class="[$style.drawer, $style[hover]]"
+        elevation="12"
+        @mouseover="hover = 'over'"
+        @mouseleave="hover = 'leave'"
+      >
+        <drawer-list :items="drawerItems" />
+      </v-card>
+    </div>
+
+    <v-app-bar fixed app elevation="0" color="white">
+      <div
+        :class="$style.slideArea2"
+        @mouseover="hover = 'over'"
+        @mouseleave="hover = 'leave'"
+      >
+        <v-btn
+          v-if="hover === 'over' || drawer"
+          icon
+          @click.stop="drawer = !drawer"
+        >
+          <v-icon v-text="`mdi-chevron-${drawer ? 'left' : 'right'}`" />
+        </v-btn>
+        <v-app-bar-nav-icon v-if="hover === 'leave' && !drawer" />
+      </div>
+
       <v-spacer />
-      <a
+      <v-btn
+        rounded
+        class="mr-5"
+        :to="localePath('/register')"
+        elevation="0"
+        v-text="$t('register.title')"
+      />
+      <v-btn
         v-for="locale in availableLocales"
         id="localeSwitch"
         :key="locale.code"
-        :class="$style.link"
-        @click.prevent="changeLocale(locale.code)"
-        >{{ locale.name }}</a
-      >
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
+        rounded
+        class="mr-5"
+        elevation="0"
+        @click="changeLocale(locale.code)"
+        v-text="locale.name"
+      />
     </v-app-bar>
+
     <v-content>
       <v-container>
         <nuxt />
       </v-container>
     </v-content>
-    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer :fixed="fixed" app>
+
+    <v-footer app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+import DrawerList from '@/components/list/DrawerList'
+
 export default {
+  components: { DrawerList },
   data() {
     return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Top'
+      hover: 'leave',
+      drawer: true
     }
   },
   computed: {
     availableLocales() {
       return this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale)
+    },
+    drawerItems() {
+      const items = [
+        {
+          icon: 'mdi-apps',
+          name: 'drawer.items.top',
+          to: '/'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          name: 'drawer.items.about',
+          to: '/about'
+        },
+        {
+          icon: 'mdi-account',
+          name: 'drawer.items.user',
+          to: '/user'
+        },
+        {
+          icon: 'mdi-email-outline',
+          name: 'drawer.items.contact',
+          to: '/contact'
+        }
+      ]
+      // eslint-disable-next-line prefer-const
+      let localeItems = []
+      for (const item of items) {
+        const localeUrl = this.localePath(item.to)
+        item.to = localeUrl
+        localeItems.push(item)
+      }
+      return localeItems
     }
   },
   methods: {
@@ -114,6 +126,37 @@ export default {
 </script>
 
 <style lang="sass" module>
-.link
-  text-decoration : none
+.drawer
+  width : 200px
+  margin-top : 100px
+  position : absolute
+  z-index : 10
+
+.slideArea
+  width : 200px
+  height :100vh
+  position : absolute
+  z-index : 5
+
+  @media screen and (max-width : 950px)
+    width : 100px
+  @media screen and (max-width : 750px)
+    width : 50px
+
+.slideArea2
+  position : absolute
+  top : 0
+  left : 0
+  width : 250px
+  height :100%
+
+.over
+  transform : translateX(0%)
+  opacity : 1
+  transition : .3s
+
+.leave
+  transform : translateX(-100%)
+  opacity : 0.1
+  transition : .3s
 </style>

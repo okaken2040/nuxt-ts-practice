@@ -1,14 +1,10 @@
 <template>
   <v-app dark>
-    <h1 v-if="error.statusCode === 404">
-      {{ pageNotFound }}
-    </h1>
-    <h1 v-else>
-      {{ otherError }}
-    </h1>
-    <NuxtLink to="/">
-      Home page
-    </NuxtLink>
+    <v-card max-width="500" class="mx-auto" elevation="0">
+      <h1 v-if="error.statusCode === 404" v-text="pageNotFound" />
+      <h1 v-else v-text="otherError" />
+      <v-btn text small :to="localePath('/')" v-text="'Home page'" />
+    </v-card>
   </v-app>
 </template>
 
