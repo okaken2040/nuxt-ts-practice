@@ -1,6 +1,6 @@
 <template>
   <validation-provider v-slot="{ errors }" :rules="rules" :name="labelMessage">
-    <label :for="formComponentName"> {{ labelMessage }} </label>
+    <label :for="formComponentName" v-text="labelMessage" />
     <v-textarea
       :id="formComponentName"
       v-model="inputValueModel"
@@ -9,16 +9,15 @@
       :name="formComponentName"
       :maxlength="maxLength"
       :placeholder="placeHolderMessage"
-      solo
+      outlined
       :counter="isCounter ? maxLength : undefined"
-    ></v-textarea>
+    />
     <p
       v-show="errors.length"
       :id="formComponentName + '_error'"
       :class="$style.error_message"
-    >
-      {{ errors[0] }}
-    </p>
+      v-text="errors[0]"
+    />
   </validation-provider>
 </template>
 

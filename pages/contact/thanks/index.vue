@@ -1,14 +1,11 @@
 <template>
-  <v-row justify="center">
-    <v-col cols="12" md="8" ls="6">
-      <v-card>
-        <v-card-title>
-          <h1>{{ $t('thank.title') }}</h1>
-        </v-card-title>
-        <v-card-text>
-          <p>{{ $t('thank.content') }}</p>
-        </v-card-text>
-      </v-card>
-    </v-col>
-  </v-row>
+  <div>
+    <h1
+      class="title font-weight-bold text-center my-3"
+      v-text="$t('thank.title')"
+    />
+    <v-card max-width="500" class="mx-auto" elevation="0">
+      <p class="text-center" v-text="$t('thank.content')" />
+    </v-card>
+  </div>
 </template>
